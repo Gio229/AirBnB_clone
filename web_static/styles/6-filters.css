@@ -69,6 +69,7 @@ button:hover {
     visibility: hidden;
     padding-top: 15px;
     padding-bottom: 15px;
+    z-index: 200;
 }
 
 .popover ul {
