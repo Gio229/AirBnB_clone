@@ -4,7 +4,7 @@ This module define the Place
 """
 import unittest
 
-from models.review import Review
+from ...models.review import Review
 
 
 class TestReview(unittest.TestCase):
