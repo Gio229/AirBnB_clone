@@ -11,6 +11,7 @@ class BaseModel:
     This class efines all common
     attributes/methods for other classes
     """
+
     def __init__(self):
         """Constructor
         """
@@ -36,7 +37,7 @@ class BaseModel:
         dict_repr["__class__"] = self.__class__.__name__
         dict_repr["created_at"] = dict_repr["created_at"].isoformat()
         dict_repr["updated_at"] = dict_repr["updated_at"].isoformat()
-        
+
         return dict_repr
 
 
