@@ -8,9 +8,10 @@ from datetime import datetime
 
 class BaseModel:
     """
-    This class efines all common
+    This class defines all common
     attributes/methods for other classes
     """
+    date_format = "%Y-%m-%dT%H:%M:%S.%f"
 
     def __init__(self):
         """Constructor
@@ -20,7 +21,7 @@ class BaseModel:
         self.updated_at = datetime.now()
 
     def __str__(self):
-        """Give the string representation
+        """Give the string representation of the object
         """
         return "[{}] ({}) {}".format(
             self.__class__.__name__, self.id, self.__dict__)
@@ -35,8 +36,10 @@ class BaseModel:
         """
         dict_repr = self.__dict__
         dict_repr["__class__"] = self.__class__.__name__
-        dict_repr["created_at"] = dict_repr["created_at"].isoformat()
-        dict_repr["updated_at"] = dict_repr["updated_at"].isoformat()
+        dict_repr["created_at"] = dict_repr["created_at"].strftime(
+            self.date_format)
+        dict_repr["updated_at"] = dict_repr["updated_at"].strftime(
+            self.date_format)
 
         return dict_repr
 
