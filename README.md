@@ -22,7 +22,7 @@ This command line tool (hbnb) is going to:
 
 Open your terminal an run this following command to clone the repository:
 
-    git clone "https://github.com/Gio229/AirBnB_clone.git"
+    git clone https://github.com/Gio229/AirBnB_clone.git
 
 Access AirBnb directory:
 
