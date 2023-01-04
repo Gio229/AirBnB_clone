@@ -5,11 +5,12 @@
 ## Description
 
 This AirBnB clone project (The console) is the first version of a larger clone project.
-Here we are building a commandline interpreter to easly work with
+
+Here we are building a command line interpreter to easly work and interact with our data without the need of user interface.
 
 ## Features
 
-This commandline tool (hbnb) is going to:
+This command line tool (hbnb) is going to:
 
 > - Create a new object (ex: a new User or a new Place)
 > - Retrieve an object from a file, a database etc…
