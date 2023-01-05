@@ -34,25 +34,35 @@ Run the console in interactive mode with:
 
 The output will look like this:
 
-    $ ./console.py
-    (hbnb) help
-
-    Documented commands (type help <topic>):
-    ========================================
-    EOF  help  quit
-
-    (hbnb) 
-    (hbnb) 
-    (hbnb) quit
-    $
+>$ ./console.py
+>
+>(hbnb) help
+>
+>Documented commands (type help <topic>):
+>
+>========================================
+>
+>EOF &nbsp;&nbsp; help &nbsp;&nbsp; quit
+>
+>(hbnb) 
+>
+>(hbnb)
+> 
+>(hbnb) quit
+>
+>$
 
 But also in non-interactive mode:
 
-    $ echo "help" | ./console.py
-    (hbnb)
-
-    Documented commands (type help  <topic>):
-    ========================================
-    EOF  help  quit
-    (hbnb) 
-    $
+>$ echo "help" | ./console.py
+>(hbnb)
+>
+>Documented commands (type help  <topic>):
+>
+>========================================
+>
+>EOF &nbsp;&nbsp; help &nbsp;&nbsp; quit
+>
+>(hbnb) 
+>
+>$
