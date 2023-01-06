@@ -31,7 +31,6 @@ class FileStorage:
     def save(self):
         """Save objects to json file storage
         """
-        print("enter in save")
         try:
             objects_to_store = {}
             for key, value in self.__objects.items():
