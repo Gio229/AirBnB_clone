@@ -38,10 +38,8 @@ class FileStorage:
                 objects_to_store[key] = value.to_dict()
             with open(self.__file_path, 'w') as f:
                 json.dump(objects_to_store, f)
-                print(" tout bien {}".format(objects_to_store))
         except:
             return
-        print("out of save")
 
     def reload(self):
         """Recovered all objects from json file storage
