@@ -1,5 +1,6 @@
 #!/usr/bin/python3
 from models import storage
+import json
 from models.base_model import BaseModel
 
 all_objs = storage.all()
@@ -15,3 +16,4 @@ my_model.my_number = 89
 my_model.save()
 print(my_model)
 print("storage {}".format(storage.all()))
+
