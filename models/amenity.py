@@ -2,7 +2,7 @@
 """
 This module define the class Amenity
 """
-from base_model import BaseModel
+from .base_model import BaseModel
 
 
 class Amenity(BaseModel):

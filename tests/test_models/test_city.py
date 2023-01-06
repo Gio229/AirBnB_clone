@@ -4,7 +4,7 @@ This module define the TestCity
 """
 import unittest
 
-from ...models.city import City
+from models.city import City
 
 
 class TestCity(unittest.TestCase):

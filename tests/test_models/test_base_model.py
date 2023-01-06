@@ -4,7 +4,7 @@ This module define the TestBaseModel
 """
 import unittest
 
-from ...models.base_model import BaseModel
+from models.base_model import BaseModel
 
 
 class TestBaseModel(unittest.TestCase):

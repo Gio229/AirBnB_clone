@@ -4,7 +4,7 @@ This module define the Place
 """
 import unittest
 
-from ...models.place import Place
+from models.place import Place
 
 
 class TestPlace(unittest.TestCase):
