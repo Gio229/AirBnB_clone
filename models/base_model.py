@@ -13,12 +13,23 @@ class BaseModel:
     """
     date_format = "%Y-%m-%dT%H:%M:%S.%f"
 
-    def __init__(self):
+    def __init__(self, *args, **kwargs):
         """Constructor
         """
-        self.id = str(uuid.uuid4())
-        self.created_at = datetime.now()
-        self.updated_at = datetime.now()
+        if kwargs:
+            for key, value in kwargs.items():
+                if key not in ["__class__", "created_at", "updated_at"]:
+                    setattr(self, key, value)
+                if key == "created_at" and type(kwargs[key]) is str:
+                    self.created_at = datetime.strptime(
+                        kwargs[key], self.date_format)
+                if key == "updated_at" and type(kwargs[key]) is str:
+                    self.created_at = datetime.strptime(
+                        kwargs[key], self.date_format)
+        else:
+            self.id = str(uuid.uuid4())
+            self.created_at = datetime.now()
+            self.updated_at = datetime.now()
 
     def __str__(self):
         """Give the string representation of the object
