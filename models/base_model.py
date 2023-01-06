@@ -4,7 +4,7 @@ This module define the class BaseModel
 """
 import uuid
 from datetime import datetime
-
+import models
 
 class BaseModel:
     """
@@ -41,6 +41,7 @@ class BaseModel:
         """Save the instance
         """
         self.updated_at = datetime.now()
+        models.storage.save()
 
     def to_dict(self):
         """Return the instance as dictionary

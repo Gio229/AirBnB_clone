@@ -33,10 +33,10 @@ class FileStorage:
         """
         try:
             objects_to_store = {}
-            #for key, value in self.__objects.items():
-            #    objects_to_store[key] = value.to_dict()
-            with open("file.json", 'w') as f:
-                json.dump({"ze zeofn": "me ref"}, f)
+            for key, value in self.__objects.items():
+                objects_to_store[key] = value.to_dict()
+            with open(self.__file_path, 'w') as f:
+                json.dump(objects_to_store, f)
         except:
             return
 
@@ -51,3 +51,6 @@ class FileStorage:
                 self.__objects = recovered_objects
         except:
             return
+    
+    def some(self):
+        print ("me void=")
