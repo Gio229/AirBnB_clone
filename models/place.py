@@ -20,5 +20,5 @@ class Place(BaseModel):
     latitude = 0.0
     longitude = 0.0
 
-    def __init__(self):
-        super().__init__()
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
