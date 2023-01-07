@@ -3,6 +3,7 @@
 This module define the TestBaseModel
 """
 import unittest
+import json
 
 from models.base_model import BaseModel
 
@@ -26,7 +27,7 @@ class TestBaseModel(unittest.TestCase):
         self.assertEqual(obj1.id, obj2.id)
         self.assertEqual(obj1.created_at, obj2.created_at)
         self.assertEqual(obj1.updated_at, obj2.updated_at)
-    
+
     def test_save(self):
         """Test if instance is correctly saved
         """
@@ -35,6 +36,10 @@ class TestBaseModel(unittest.TestCase):
         baseModel.save()
         new_updated_at = baseModel.updated_at
         self.assertNotEqual(old_updated_at, new_updated_at)
+
+        with open("file.json", "r") as f:
+            recovered_objects_json = json.load(f)
+            self.assertIn("BaseModel." + baseModel.id, recovered_objects_json)
 
 
 
