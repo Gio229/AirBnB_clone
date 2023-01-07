@@ -34,8 +34,12 @@ class TestFileStorageDocs(unittest.TestCase):
         self.assertEqual(type(objects), dict)
 
     def test_reload(self):
+        """Test if reload method work well
+        """
         storage = FileStorage()
         baseModel = BaseModel()
+        #storage.reload()
+        #self.assertEqual(storage.all(), {})
         bm1 = BaseModel()
         storage.new(baseModel)
         storage.new(bm1)
@@ -51,6 +55,8 @@ class TestFileStorageDocs(unittest.TestCase):
 
     
     def test_new(self):
+        """Test if new method work well
+        """
         storage = FileStorage()
         baseModel = BaseModel()
         storage.new(baseModel)
@@ -58,6 +64,8 @@ class TestFileStorageDocs(unittest.TestCase):
                       storage.all())
 
     def test_save(self):
+        """Test if save method work well
+        """
         storage = FileStorage()
         baseModel = BaseModel()
         storage.new(baseModel)
