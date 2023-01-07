@@ -4,8 +4,7 @@ This module define the class BaseModel
 """
 import uuid
 from datetime import datetime
-from models import storage
-
+import models
 
 class BaseModel:
     """
@@ -25,15 +24,14 @@ class BaseModel:
                     self.created_at = datetime.strptime(
                         kwargs[key], self.date_format)
                 if key == "updated_at" and type(kwargs[key]) is str:
-                    self.created_at = datetime.strptime(
+                    self.updated_at = datetime.strptime(
                         kwargs[key], self.date_format)
         else:
             self.id = str(uuid.uuid4())
             self.created_at = datetime.now()
             self.updated_at = datetime.now()
             # Adding to the FileStorage objects
-            storage.new(self)
-            
+            models.storage.new(self)
 
     def __str__(self):
         """Give the string representation of the object
@@ -47,7 +45,7 @@ class BaseModel:
         self.updated_at = datetime.now()
 
         # Saving all objects to the json file storage
-        storage.save()
+        models.storage.save()
 
     def to_dict(self):
         """Return the instance as dictionary

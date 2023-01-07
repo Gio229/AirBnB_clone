@@ -3,6 +3,7 @@
 This module define the class FileStorage
 """
 import json
+from models.base_model import BaseModel
 
 
 class FileStorage:
@@ -47,7 +48,8 @@ class FileStorage:
             with open(self.__file_path, 'r') as f:
                 recovered_objects = json.load(f)
                 for object in recovered_objects.values():
+                    __class__ = object["__class__"]
                     del object["__class__"]
-                self.__objects = recovered_objects
+                    self.new(eval(__class__)(**object))
         except OSError:
             return
