@@ -13,7 +13,9 @@ class TestFileStorageDocs(unittest.TestCase):
     """
     This class define all tests for FileStorage
     """
-    pass
+
+    def test_instantiation(self):
+        self.assertEqual(FileStorage, type(FileStorage()))
 
 
 if __name__ == "__main__":
