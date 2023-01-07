@@ -15,8 +15,15 @@ class TestFileStorageDocs(unittest.TestCase):
     """
 
     def test_instantiation(self):
+        """Test if new instance have the good type
+        """
         self.assertEqual(FileStorage, type(FileStorage()))
 
+    def test_all(self):
+        """Test if all method work well"""
+        storage = FileStorage()
+        objects_from_storage = storage.all()
+        self.assertEqual(type(objects_from_storage), dict)
 
 if __name__ == "__main__":
     unittest.main()
