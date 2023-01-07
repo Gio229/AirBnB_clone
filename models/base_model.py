@@ -6,6 +6,7 @@ import uuid
 from datetime import datetime
 from models import storage
 
+
 class BaseModel:
     """
     This class defines all common
@@ -30,6 +31,10 @@ class BaseModel:
             self.id = str(uuid.uuid4())
             self.created_at = datetime.now()
             self.updated_at = datetime.now()
+        # Adding to the FileStorage objects
+        storage.new(self)
+        # Saving all objects to the json file storage
+        storage.save()
 
     def __str__(self):
         """Give the string representation of the object
@@ -42,8 +47,6 @@ class BaseModel:
         """
         self.updated_at = datetime.now()
 
-        # Adding to the FileStorage objects
-        storage.new(self)
         # Saving all objects to the json file storage
         storage.save()
 
@@ -58,4 +61,3 @@ class BaseModel:
             self.date_format)
 
         return dict_repr
-
