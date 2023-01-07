@@ -36,14 +36,18 @@ class TestFileStorageDocs(unittest.TestCase):
     def test_reload(self):
         storage = FileStorage()
         baseModel = BaseModel()
+        bm1 = BaseModel()
         storage.new(baseModel)
+        storage.new(bm1)
         storage.save()
         storage.reload()
         self.assertIn("BaseModel." + baseModel.id,
                       storage.all())
-        with open("file.json", "r") as f:
-            recovered_objects_json = json.load(f)
-            self.assertIn("BaseModel." + baseModel.id, recovered_objects_json)
+        bm2 = storage.all()["BaseModel." + bm1.id]
+
+        self.assertEqual(bm1.id, bm2.id)
+        self.assertEqual(bm1.created_at, bm2.created_at)
+        self.assertEqual(bm1.updated_at, bm2.updated_at)
 
     
     def test_new(self):
