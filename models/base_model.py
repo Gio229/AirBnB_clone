@@ -4,7 +4,7 @@ This module define the class BaseModel
 """
 import uuid
 from datetime import datetime
-import models
+from models import storage
 
 class BaseModel:
     """
@@ -43,14 +43,14 @@ class BaseModel:
         self.updated_at = datetime.now()
 
         # Adding to the FileStorage objects
-        models.storage.new(self)
+        storage.new(self)
         # Saving all objects to the json file storage
-        models.storage.save()
+        storage.save()
 
     def to_dict(self):
         """Return the instance as dictionary
         """
-        dict_repr = self.__dict__
+        dict_repr = self.__dict__.copy()
         dict_repr["__class__"] = self.__class__.__name__
         dict_repr["created_at"] = dict_repr["created_at"].strftime(
             self.date_format)
