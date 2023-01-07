@@ -58,3 +58,4 @@ class BaseModel:
             self.date_format)
 
         return dict_repr
+    
