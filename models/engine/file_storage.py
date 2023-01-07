@@ -37,7 +37,7 @@ class FileStorage:
                 objects_to_store[key] = value.to_dict()
             with open(self.__file_path, 'w') as f:
                 json.dump(objects_to_store, f)
-        except:
+        except OSError:
             return
 
     def reload(self):
@@ -49,8 +49,5 @@ class FileStorage:
                 for object in recovered_objects.values():
                     del object["__class__"]
                 self.__objects = recovered_objects
-        except:
+        except OSError:
             return
-    
-    def some(self):
-        print ("me void=")
