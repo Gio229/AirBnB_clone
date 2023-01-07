@@ -41,6 +41,10 @@ class TestFileStorageDocs(unittest.TestCase):
         storage.reload()
         self.assertIn("BaseModel." + baseModel.id,
                       storage.all())
+        with open("file.json", "r") as f:
+            recovered_objects_json = json.load(f)
+            self.assertIn("BaseModel." + baseModel.id, recovered_objects_json)
+
     
     def test_new(self):
         storage = FileStorage()
