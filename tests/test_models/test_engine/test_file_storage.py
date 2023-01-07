@@ -38,13 +38,13 @@ class TestFileStorageDocs(unittest.TestCase):
         """
         storage = FileStorage()
         baseModel = BaseModel()
-        #storage.reload()
-        #self.assertEqual(storage.all(), {})
+        
         bm1 = BaseModel()
         storage.new(baseModel)
         storage.new(bm1)
         storage.save()
         storage.reload()
+        self.assertTrue(len(storage.all()) > 0)
         self.assertIn("BaseModel." + baseModel.id,
                       storage.all())
         self.assertIn("BaseModel." + baseModel.id,
@@ -54,6 +54,11 @@ class TestFileStorageDocs(unittest.TestCase):
         self.assertEqual(bm1.id, bm2.id)
         self.assertEqual(bm1.created_at, bm2.created_at)
         self.assertEqual(bm1.updated_at, bm2.updated_at)
+
+        with open("file.json", 'w') as f:
+            f.write("NOT A DICTIONARY")
+        with self.assertRaises(Exception):
+            storage.reload()
 
     
     def test_new(self):
