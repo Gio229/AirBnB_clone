@@ -41,6 +41,10 @@ class BaseModel:
         """Save the instance
         """
         self.updated_at = datetime.now()
+
+        # Adding to the FileStorage objects
+        models.storage.new(self)
+        # Saving all objects to the json file storage
         models.storage.save()
 
     def to_dict(self):
@@ -55,8 +59,3 @@ class BaseModel:
 
         return dict_repr
 
-
-if __name__ == "__main__":
-    bb = BaseModel()
-    print(bb)
-    print(bb.to_dict())
