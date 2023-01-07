@@ -31,10 +31,9 @@ class BaseModel:
             self.id = str(uuid.uuid4())
             self.created_at = datetime.now()
             self.updated_at = datetime.now()
-        # Adding to the FileStorage objects
-        storage.new(self)
-        # Saving all objects to the json file storage
-        storage.save()
+            # Adding to the FileStorage objects
+            storage.new(self)
+            
 
     def __str__(self):
         """Give the string representation of the object
