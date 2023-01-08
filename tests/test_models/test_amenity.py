@@ -2,6 +2,7 @@
 """
 This module define the Place
 """
+from datetime import datetime
 import unittest
 
 from models.amenity import Amenity
@@ -13,7 +14,16 @@ class TestAmenity(unittest.TestCase):
     """
 
     def test_instantiation(self):
-        self.assertEqual(Amenity, type(Amenity()))
+        amenity = Amenity()
+        self.assertEqual(Amenity, type(amenity))
+        self.assertTrue(type(amenity.id) is str)
+        self.assertTrue(type(amenity.created_at) is datetime)
+        self.assertTrue(type(amenity.updated_at) is datetime)
+    
+    def test_name(self):
+        """Test if name attribute is string
+        """
+        self.assertEqual(str, type(Amenity.name))
 
 
 if __name__ == "__main__":
