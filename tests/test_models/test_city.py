@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-This module define the TestCity
+This module define the City tests
 """
 from datetime import datetime
 import unittest

@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-This module define the TestBaseModel
+This module define the BaseModel tests
 """
 import unittest
 import json

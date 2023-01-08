@@ -161,6 +161,8 @@ class HBNBCommand(cmd.Cmd):
             print(count)
 
     def default(self, line: str):
+        """Main goal is to handle util method
+        """
         if "(" in line or ")" in line:
             args = line.split('.')
         else:

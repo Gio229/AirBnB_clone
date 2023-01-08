@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-This module define the Place
+This module define the User tests
 """
 import unittest
 from datetime import datetime
