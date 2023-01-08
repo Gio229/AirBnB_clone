@@ -73,5 +73,8 @@ class TestConsoleClass(unittest.TestCase):
             basemodel_id = val.getvalue()
             self.assertTrue(len(basemodel_id) > 0)
         with patch('sys.stdout', new=StringIO()) as val:
+            HBNBCommand().onecmd('show BaseModel ')
+            self.assertTrue(val.getvalue() == "** instance id missing **\n")
+        with patch('sys.stdout', new=StringIO()) as val:
             HBNBCommand().onecmd('show BaseModel ' + basemodel_id)
             self.assertTrue(val.getvalue() != "** no instance found **\n")
