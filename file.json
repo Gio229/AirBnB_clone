@@ -1,8 +1,1 @@
-{
-  "User.a7c3a8b0-0bef-4f98-9c8d-0ad0401741d0": {
-    "id": "a7c3a8b0-0bef-4f98-9c8d-0ad0401741d0",
-    "created_at": "2023-01-07T18:48:46.640279",
-    "updated_at": "2023-01-07T18:48:46.640305",
-    "__class__": "User"
-  }
-}
+{"City.37d1d46a-b894-484d-8dd5-43d22c2bbb3b": {"id": "37d1d46a-b894-484d-8dd5-43d22c2bbb3b", "created_at": "2023-01-08T07:59:04.100905", "updated_at": "2023-01-08T08:46:26.080740", "name": "Cotonou", "__class__": "City"}, "Amenity.ad8048d5-5c2e-43bf-83f2-510151b45924": {"id": "ad8048d5-5c2e-43bf-83f2-510151b45924", "created_at": "2023-01-08T07:59:30.229968", "updated_at": "2023-01-08T07:59:30.229991", "__class__": "Amenity"}}

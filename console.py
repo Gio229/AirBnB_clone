@@ -96,6 +96,52 @@ class HBNBCommand(cmd.Cmd):
                 del storage.all()[instance_id]
                 storage.save()
 
+    def do_all(self, arg):
+        """ Prints all string representation of all instances
+        based or not on the class name
+        """
+        args = arg.split(' ')
+        all_instances = []
+        if args == ['']:
+            for value in storage.all().values():
+                all_instances.append(value.__str__())
+            print(all_instances)
+        elif args[0] not in self.__available_classes:
+            print("** class doesn't exist **")
+        else:
+            for key, value in storage.all().items():
+                identifier = args[0] + "." + value.id
+                if key == identifier:
+                    all_instances.append(value.__str__())
+            print(all_instances)
+    
+    def do_update(self, arg):
+        """ Updates an instance based on the class
+        name and id by adding or updating attribute
+        """
+        args = arg.split(' ')
+        if args == ['']:
+            print("** class name missing **")
+        elif args[0] not in self.__available_classes:
+            print("** class doesn't exist **")
+        elif len(args) == 1:
+            print("** instance id missing **")
+        else:
+            identifier = args[0] + "." + args[1]
+            if identifier not in storage.all():
+                print("** no instance found **")
+            elif len(args) == 2:
+                print("** attribute name missing **")
+            elif len(args) == 3:
+                print("** value missing **")
+            else:
+                attribute_type = type(eval(args[3]))
+                new_value = args[3].strip('\'\"')
+                setattr(storage.all()[identifier],
+                        args[2], attribute_type(new_value))
+                storage.all()[identifier].save()
+    
+
 
 
 
