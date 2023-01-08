@@ -4,9 +4,11 @@
 
 ## Description
 
-This AirBnB clone project (The console) is the first version of a larger clone project.
+This AirBnB clone project (The console) is the first version of a larger web application clone project.
 
-Here we are building a command line interpreter to easly work and interact with our data without the need of user interface.
+Here we are building a command line interpreter to easly work and interact with our data (in file storage for the moment) without the need of user interface.
+
+![](https://s3.amazonaws.com/alx-intranet.hbtn.io/uploads/medias/2018/6/815046647d23428a14ca.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIARDDGGGOUSBVO6H7D%2F20230108%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20230108T222955Z&X-Amz-Expires=86400&X-Amz-SignedHeaders=host&X-Amz-Signature=11d8bcf9bd79fc4b1e0f0e16b575775313a97faf380823a7e76950a9144102eb)
 
 ## Features
 
