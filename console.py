@@ -3,6 +3,7 @@
 This module define commands console
 """
 import cmd
+import json
 
 from models.base_model import BaseModel
 from models.user import User
@@ -95,7 +96,7 @@ class HBNBCommand(cmd.Cmd):
         elif len(args) == 1:
             print("** instance id missing **")
         else:
-            instance_id = args[0] + "." + args[1].strip('" ')
+            instancaste_id = args[0] + "." + args[1].strip('" ')
             if instance_id not in storage.all():
                 print("** no instance found **")
             else:
@@ -188,12 +189,29 @@ class HBNBCommand(cmd.Cmd):
                     argument_passed = argument_passed.replace("'", "")
                     list_argument_passed = argument_passed.split(", ")
                     try:
-                        if type(eval(list_argument_passed[2])) is not str:
+                        if type(eval(str(list_argument_passed[2]))) is not str:
                             self.do_update("{} {} {} {} ".format(class_name,
                                                                  list_argument_passed[0], list_argument_passed[1], list_argument_passed[2]))
                     except NameError:
                         self.do_update("{} {} {} \"{}\"".format(class_name,
                                                                 list_argument_passed[0], list_argument_passed[1], list_argument_passed[2]))
+
+                else:
+                    list_argument_passed = argument_passed.split(", ", 1)
+                    argument_id = list_argument_passed[0]
+                    list_argument_passed[1] = list_argument_passed[1].replace(
+                        "'", "\"")
+                    argument_dict = json.loads(list_argument_passed[1])
+
+                    for key, value in argument_dict.items():
+                        try:
+                            if type(eval(str(value))) is not str:
+                                to_update = "{} {} {} {}".format(
+                                    class_name, argument_id, key, value)
+                        except NameError:
+                            to_update = "{} {} {} \"{}\"".format(
+                                class_name, argument_id, key, value)
+                        self.do_update(to_update)
 
     def which_util_func(self, to_evaluate: str):
         """ Analyze a given string and return the
