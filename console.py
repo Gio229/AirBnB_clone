@@ -26,6 +26,12 @@ class HBNBCommand(cmd.Cmd):
                            "State",
                            "Place",
                            "Review"]
+    
+    __available_utilities = ["show",
+                           "count",
+                           "all",
+                           "update",
+                           "destroy"]
 
     # Change the prompt name
     prompt = "(hbnb) "
@@ -89,7 +95,7 @@ class HBNBCommand(cmd.Cmd):
         elif len(args) == 1:
             print("** instance id missing **")
         else:
-            instance_id = args[0] + "." + args[1]
+            instance_id = args[0] + "." + args[1].strip('" ')
             if instance_id not in storage.all():
                 print("** no instance found **")
             else:
@@ -140,6 +146,48 @@ class HBNBCommand(cmd.Cmd):
                 setattr(storage.all()[identifier],
                         args[2], attribute_type(new_value))
                 storage.all()[identifier].save()
+    
+    def do_count(self, arg):
+        """Retrieve the number of instances of
+        a specified class"""
+        if arg not in self.__available_classes:
+            print("** class doesn't exist **")
+        else:
+            count = 0
+            for key in storage.all().keys():
+                if arg in key:
+                    count += 1
+            print(count)
+
+    def default(self, line: str):
+        args = line.split(' ')[0].split('.')
+        class_name = args[0]
+        if len(args) < 2:
+            print("** Unknown syntax: {} **".format(line))
+        elif class_name not in self.__available_classes:
+            print("** class doesn't exist **")
+        else:
+            util_method, argument_passed = self.which_util_func(args[1])
+            if util_method not in self.__available_utilities:
+                print("[{}] is not available as method".format(util_method))
+            elif util_method == "all":
+                self.do_all(class_name)
+            elif util_method == "count":
+                self.do_count(class_name)
+            elif util_method == "show":
+                self.do_show("{} \"{}\"".format(class_name, argument_passed))
+            elif util_method == "destroy":
+                self.do_destroy("{} \"{}\"".format(class_name, argument_passed))
+    
+    def which_util_func(self, to_evaluate: str):
+        """ Analyze a given string and return the
+        util function as string and param if exist
+        """
+        args = to_evaluate.split('(')
+        if len(args) > 1:
+            args[1] = args[1].strip('\')"')
+            return (args[0], args[1])
+        return (args[0], 'invalid')
 
 
 if __name__ == '__main__':
