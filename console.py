@@ -59,7 +59,7 @@ class HBNBCommand(cmd.Cmd):
             storage.new(new_instance)
             storage.save()
             print(new_instance.id)
-    
+
     def do_show(self, arg):
         """Prints the string representation of an instance
         based on the class name and id
@@ -114,7 +114,7 @@ class HBNBCommand(cmd.Cmd):
                 if key == identifier:
                     all_instances.append(value.__str__())
             print(all_instances)
-    
+
     def do_update(self, arg):
         """ Updates an instance based on the class
         name and id by adding or updating attribute
@@ -140,10 +140,6 @@ class HBNBCommand(cmd.Cmd):
                 setattr(storage.all()[identifier],
                         args[2], attribute_type(new_value))
                 storage.all()[identifier].save()
-    
-
-
-
 
 
 if __name__ == '__main__':
