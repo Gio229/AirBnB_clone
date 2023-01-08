@@ -78,7 +78,7 @@ class HBNBCommand(cmd.Cmd):
         elif len(args) == 1:
             print("** instance id missing **")
         else:
-            instance_id = args[0] + "." + args[1]
+            instance_id = args[0] + "." + args[1].strip('" ')
             if instance_id not in storage.all():
                 print("** no instance found **")
             else:
