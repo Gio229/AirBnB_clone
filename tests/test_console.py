@@ -220,6 +220,64 @@ class TestConsoleClass(unittest.TestCase):
 
     # -------------------------------
 
+    def test_all_base_model_method(self):
+        """ test all BaseModel method output """
+        with patch('sys.stdout', new=StringIO()) as val:
+            HBNBCommand().onecmd('create BaseModel')
+        with patch('sys.stdout', new=StringIO()) as val:
+            HBNBCommand().onecmd('BaseModel.all()')
+            self.assertTrue(len(val.getvalue()) > 0)
+
+    def test_all_review_method(self):
+        """ test all Review method output """
+        with patch('sys.stdout', new=StringIO()) as val:
+            HBNBCommand().onecmd('create Review')
+        with patch('sys.stdout', new=StringIO()) as val:
+            HBNBCommand().onecmd('Review.all()')
+            self.assertTrue(len(val.getvalue()) > 0)
+
+    def test_all_user_method(self):
+        """ test all User method output """
+        with patch('sys.stdout', new=StringIO()) as val:
+            HBNBCommand().onecmd('create User')
+        with patch('sys.stdout', new=StringIO()) as val:
+            HBNBCommand().onecmd('User.all()')
+            self.assertTrue(len(val.getvalue()) > 0)
+
+    def test_all_state_method(self):
+        """ test all State method output """
+        with patch('sys.stdout', new=StringIO()) as val:
+            HBNBCommand().onecmd('create State')
+        with patch('sys.stdout', new=StringIO()) as val:
+            HBNBCommand().onecmd('State.all()')
+            self.assertTrue(len(val.getvalue()) > 0)
+
+    def test_all_city_method(self):
+        """ test all City method output """
+        with patch('sys.stdout', new=StringIO()) as val:
+            HBNBCommand().onecmd('create City')
+        with patch('sys.stdout', new=StringIO()) as val:
+            HBNBCommand().onecmd('City.all()')
+            self.assertTrue(len(val.getvalue()) > 0)
+
+    def test_all_amenity_method(self):
+        """ test all Amenity method output """
+        with patch('sys.stdout', new=StringIO()) as val:
+            HBNBCommand().onecmd('create Amenity')
+        with patch('sys.stdout', new=StringIO()) as val:
+            HBNBCommand().onecmd('Amenity.all()')
+            self.assertTrue(len(val.getvalue()) > 0)
+
+    def test_all_place_method(self):
+        """ test all Place method output """
+        with patch('sys.stdout', new=StringIO()) as val:
+            HBNBCommand().onecmd('create Place')
+        with patch('sys.stdout', new=StringIO()) as val:
+            HBNBCommand().onecmd('Place.all()')
+            self.assertTrue(len(val.getvalue()) > 0)
+
+    # -------------------------------
+
     def test_show_base_model_method(self):
         """ test show BaseModel method output """
         with patch('sys.stdout', new=StringIO()) as val:
@@ -365,3 +423,5 @@ class TestConsoleClass(unittest.TestCase):
             HBNBCommand().onecmd('City.show("{}")'.format(instance_created_id))
             result2 = val.getvalue()
             self.assertTrue(result1 != result2)
+    #---------------------
+
