@@ -26,12 +26,12 @@ class HBNBCommand(cmd.Cmd):
                            "State",
                            "Place",
                            "Review"]
-    
+
     __available_utilities = ["show",
-                           "count",
-                           "all",
-                           "update",
-                           "destroy"]
+                             "count",
+                             "all",
+                             "update",
+                             "destroy"]
 
     # Change the prompt name
     prompt = "(hbnb) "
@@ -146,7 +146,7 @@ class HBNBCommand(cmd.Cmd):
                 setattr(storage.all()[identifier],
                         args[2], attribute_type(new_value))
                 storage.all()[identifier].save()
-    
+
     def do_count(self, arg):
         """Retrieve the number of instances of
         a specified class"""
@@ -160,7 +160,10 @@ class HBNBCommand(cmd.Cmd):
             print(count)
 
     def default(self, line: str):
-        args = line.split(' ')[0].split('.')
+        if "(" in line or ")" in line:
+            args = line.split('.')
+        else:
+            args = line.split(' ')[0].split('.')
         class_name = args[0]
         if len(args) < 2:
             print("** Unknown syntax: {} **".format(line))
@@ -177,8 +180,21 @@ class HBNBCommand(cmd.Cmd):
             elif util_method == "show":
                 self.do_show("{} \"{}\"".format(class_name, argument_passed))
             elif util_method == "destroy":
-                self.do_destroy("{} \"{}\"".format(class_name, argument_passed))
-    
+                self.do_destroy("{} \"{}\"".format(
+                    class_name, argument_passed))
+            elif util_method == "update":
+                if "{" not in argument_passed and "}" not in argument_passed:
+                    argument_passed = argument_passed.replace("\"", "")
+                    argument_passed = argument_passed.replace("'", "")
+                    list_argument_passed = argument_passed.split(", ")
+                    try:
+                        if type(eval(list_argument_passed[2])) is not str:
+                            self.do_update("{} {} {} {} ".format(class_name,
+                                                                 list_argument_passed[0], list_argument_passed[1], list_argument_passed[2]))
+                    except NameError:
+                        self.do_update("{} {} {} \"{}\"".format(class_name,
+                                                                list_argument_passed[0], list_argument_passed[1], list_argument_passed[2]))
+
     def which_util_func(self, to_evaluate: str):
         """ Analyze a given string and return the
         util function as string and param if exist
