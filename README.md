@@ -113,3 +113,6 @@ Let's take a deep dive with this exemple below.
             eg3: User.update("38f22813-2753-4d42-b37c-57a17f1e4f88", {'first_name': "John", "age": 89})
             
     (hbnb) 
+
+## Authors
+[Giovanni Athaoue](https://github.com/Gio229)
