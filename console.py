@@ -55,6 +55,8 @@ class HBNBCommand(cmd.Cmd):
     def do_create(self, arg):
         """
         Create instance of class
+        Syntax: create <class name>
+        eg: create BaseModel
         """
         args = arg.split(' ')
         if args == ['']:
@@ -68,8 +70,10 @@ class HBNBCommand(cmd.Cmd):
             print(new_instance.id)
 
     def do_show(self, arg):
-        """Prints the string representation of an instance
-        based on the class name and id
+        """Prints the string representation of an instance based on the class name and id
+        Default syntax: show <class name> <id>
+        Alternative syntax: <class name>.show(<id>)
+        eg: show BaseModel 1234-1234-123
         """
         args = arg.split(' ')
         if args == ['']:
@@ -87,6 +91,10 @@ class HBNBCommand(cmd.Cmd):
 
     def do_destroy(self, arg):
         """Deletes an instance based on the class name and id
+        Default syntax: destroy <class name> <id>
+        Alternative syntax: <class name>.destroy(<id>)
+        eg1: destroy BaseModel 1234-1234-123
+        eg2: BaseModel.destroy(1234-1234-123)
         """
         args = arg.split(' ')
         if args == ['']:
@@ -104,8 +112,11 @@ class HBNBCommand(cmd.Cmd):
                 storage.save()
 
     def do_all(self, arg):
-        """ Prints all string representation of all instances
-        based or not on the class name
+        """ Prints all string representation of all instances based or not on the class name
+        Default syntax: all [<class name>]
+        Alternative syntax: <class name>.all()
+        eg1: all BaseModel
+        eg2: BaseModel.all()
         """
         args = arg.split(' ')
         all_instances = []
@@ -123,8 +134,15 @@ class HBNBCommand(cmd.Cmd):
             print(all_instances)
 
     def do_update(self, arg):
-        """ Updates an instance based on the class
-        name and id by adding or updating attribute
+        """ Updates an instance based on the class name and id by adding or updating attribute
+        Default syntax: update <class name> <id> <attribute name> "<attribute value>"
+            !!! THIS SYNTAX CAN JUST UPDATE ONE ATTRIBUTE AT TIME
+        Alternative syntax 1: <class name>.update(<id>, <attribute name>, <attribute value>)
+            !!! THIS SYNTAX CAN JUST UPDATE ONE ATTRIBUTE AT TIME
+        Alternative syntax 2: <class name>.update(<id>, <dictionary representation>)
+        eg1: update BaseModel 1234-1234-1234 email "aibnb@mail.com"
+        eg2:  User.update("38f22813-2753-4d42-b37c-57a17f1e4f88", "age", 89)
+        eg3: User.update("38f22813-2753-4d42-b37c-57a17f1e4f88", {'first_name': "John", "age": 89})
         """
         args = arg.split(' ')
         if args == ['']:
@@ -149,8 +167,12 @@ class HBNBCommand(cmd.Cmd):
                 storage.all()[identifier].save()
 
     def do_count(self, arg):
-        """Retrieve the number of instances of
-        a specified class"""
+        """Retrieve the number of instances of a specified class
+        Default syntax: count [<class name>]
+        Alternative syntax: <class name>.count()
+        eg1: count BaseModel
+        eg2: BaseModel.count()
+        """
         if arg not in self.__available_classes:
             print("** class doesn't exist **")
         else:

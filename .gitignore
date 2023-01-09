@@ -1,1 +1,7 @@
 __pycache__
+tests/__pycache__
+models/__pycache__
+models/engine/__pycache__
+tests/models/__pycache__
+tests/models/engine/__pycache__
+commit.bash
