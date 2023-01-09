@@ -4,7 +4,7 @@
 
 ## Description
 
-This AirBnB clone project (The console) is the first version of a larger web application clone project.
+This AirBnB clone student project from Holberton School (The console) is the first version of a larger web application clone project.
 
 Here we are building a command line interpreter to easly work and interact with our data (in file storage for the moment) without the need of user interface.
 
